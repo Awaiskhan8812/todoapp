@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To do App</title>
+    <style>
+        #head{
+            background-color: #1b5e50;
+            color: #ffffff;
+            padding: 5px;
+            text-align: center;
+        }
+        .input{
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+        .input [type = "submit"]{
+            background-color: #006064;
+            border: 0px;
+            font-size: 15px;
+            color: #ffffff;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        #todo{
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 20px;
+            text-align: center;
+            background-color: #a5d6a7;
+            min-width: 100px;
+            border-radius: 50px;
+            padding: 20px;
+        }
+
+    </style>
+</head>
+<body bgcolor="#e8f5e9">
+    <div id = "head">
+        <h1>To Do App</h1>
+        <a href="/todo/logout">
+            <img src="{% static 'logout.png'%}" width="40" style="float: right; margin-top: -70px;" >
+        </a
+    </div>
+    <div style="background-color: #e8eaf6; text-align: center; padding: 10px;">
+        Welcome <b>{{user}}</b>
+    </div>
+    <div id="todo">
+        <form method="POST" action="/todo/save/" >
+            {% csrf_token %}
+            <input type="text" placeholder="title" class="input" name="txt_title">
+            <textarea class="input" rows="5" style="margin-bottom: -15px;" placeholder="description" name="txt_description">
+                </textarea>
+                <input type="submit" value="SAVE" class="input">
+        </form>
+    </div>
+    <div style="margin: 20px;">
+        <table width="100%" cellpading="5" border="1" cellspacing = "0">
+            <tr>
+                <th>Title</th>
+                <th colspan="2">Description</th>
+            </tr>
+            {% for todo in todos%}
+            <tr>
+                <td>
+                    {{todo.1}}
+                </td>
+                <td>
+                    {{todo.2}}
+                </td>
+                <td align="right" width=20 >
+                    <a href="/todo/delete?id={{todo.0}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <hr>
+    <p align = "center">
+        <b>Developed</b>    <i>cybersquare</i>
+    </p>    
+</body>
+</html>

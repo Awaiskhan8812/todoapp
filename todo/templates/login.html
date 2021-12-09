@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>To do App</title>
+    <style>
+        #head{
+            background-color: green;
+            color: white;
+            padding: 5px;
+            text-align: center;
+        }
+        input{
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+        }
+        #login{
+            text-align: center;
+            background-color: #a5d6a7;
+            margin-left: 30%;
+            margin-right: 30%;
+            margin-top: 100px;
+            min-width: 400px;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        input[type = 'submit']{
+                background-color: #006064;
+                border: 0px;
+                font-size: 15px;
+                color: white;
+                border-radius: 10px;
+        }
+    </style>
+
+</head>
+<body bgcolor="#e8f5e9">
+    <div id = "head">
+        <h1>
+            To do app
+        </h1>
+        <a href="/todo">
+            <img src="{% static 'home.png'%}" width="40" style="float: right; margin-top: -70px;">
+        </a>
+    </div>
+    <div id = "login">
+        <form name = "frm_login" action="/todo/login/" method="post">
+            {% csrf_token %}
+        <input type = "text" name = "txt_username" placeholder ="Username" required>
+        <input type = "password" name = "txt_password" placeholder ="password" required>
+        <input type = "submit" value = "LOGIN">
+        </form>
+        <p style="color:#B71C1C">{{message}} </p>
+    </div>
+    <hr>
+    <p align="center">
+        <b>Developed by:</b> <i>Cybersquare</i>
+    </p>
+    
+        
+    <hr>
+    <p align = "center">
+        <b>
+            Developed by:
+        </b>
+        <i>
+            Cybersquare
+        </i>
+    </p>
+    
+</body>
+</html>
